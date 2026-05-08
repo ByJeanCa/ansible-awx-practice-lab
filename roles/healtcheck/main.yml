@@ -1,0 +1,22 @@
+---
+- name: Check if nginx is running
+  service_facts:
+
+- name: Restart nginx if is not running
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+  when: ansible_service_facts['nginx'].state != 'running'
+
+- name: Check http responde
+  ansible.builtin.uri:
+    url: "http://{{ ansible_host }}"
+    status_code:
+      - 200
+    register: http_result
+    ignore_errors: yes
+
+- name: Alert if HTTP check failed
+  ansible.builtin.debug:
+    msg: "⚠️ WARNING: {{ inventory_hostname }} is not responding on port 80!"
+  when: http_result.failed

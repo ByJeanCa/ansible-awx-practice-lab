@@ -1,0 +1,15 @@
+---
+- name: Ping all hosts
+  ansible.builtin.ping:
+    data: crash
+
+- name: Check ports
+  ansible.builtin.wait_for:
+    host: "{{ inventory_hostname }}"
+    port: "{{ ansible_port }}"
+    timeout: 10
+
+- name: Print server info
+  ansible.builtin.debug:
+    msg: "Connected to {{ inventory_hostname }} - OS: {{ ansible_distribution }}"
+    

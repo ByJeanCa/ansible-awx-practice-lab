@@ -1,0 +1,6 @@
+---
+- name: Accept HTTP traffic
+  ansible.builtin.ufw:
+    rule: allow
+    port: 80
+    proto: tcp

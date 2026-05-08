@@ -1,0 +1,23 @@
+---
+- name: Setup nginx config file
+  ansible.builtin.template:
+    src: roles/nginx/templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart nginx
+    
+- name: Deploy index file
+  ansible.builtin.template:
+    src: roles/nginx/templates/index.html.j2
+    dest:
+    owner:
+    group: 
+    mode:
+  notify: restart nginx
+
+- name: Ensure nginx is running
+  ansible.builtin.service:
+    name: nginx
+    state: present

@@ -1,0 +1,10 @@
+---
+- name: Include install tasks
+  ansible.builtin.include_tasks: install.yml
+
+- name: Include firewall tasks
+  ansible.builtin.include_tasks: firewall.yml
+
+- name: Include setup tasks
+  ansible.builtin.include_tasks: setup.yml
+    
