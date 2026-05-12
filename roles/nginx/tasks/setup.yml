@@ -11,10 +11,10 @@
 - name: Deploy index file
   ansible.builtin.template:
     src: roles/nginx/templates/index.html.j2
-    dest:
-    owner:
-    group: 
-    mode:
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
   notify: restart nginx
 
 - name: Ensure nginx is running
