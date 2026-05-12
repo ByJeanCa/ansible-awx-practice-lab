@@ -1,7 +1,7 @@
 ---
 - name: Practice for intership
 
-  hosts: ec2-instances
+  hosts: all
   become: true
   gather_facts: yes
 
