@@ -1,7 +1,6 @@
 ---
 - name: Ping all hosts
   ansible.builtin.ping:
-    data: crash
 
 - name: Check ports
   ansible.builtin.wait_for:
