@@ -20,4 +20,4 @@
 - name: Ensure nginx is running
   ansible.builtin.service:
     name: nginx
-    state: present
+    state: started
